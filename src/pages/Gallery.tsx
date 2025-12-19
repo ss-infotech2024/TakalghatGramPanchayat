@@ -14,7 +14,6 @@ import g5 from "@/assets/gallery/g5.jpg";
 import g6 from "@/assets/gallery/g6.jpg";
 import g7 from "@/assets/gallery/g7.jpg";
 import g8 from "@/assets/gallery/g8.jpg";
-import g9 from "@/assets/gallery/g9.jpg";
 import g10 from "@/assets/gallery/g10.jpg";
 import g11 from "@/assets/gallery/g11.jpg";
 import g12 from "@/assets/gallery/g12.jpg";
@@ -74,7 +73,6 @@ const galleryItems = [
   { type: "image", src: g6, category: "पायाभूत", title: "उद्यान विकास" },
   { type: "image", src: g7, category: "स्वच्छता", title: "ग्राम स्वच्छता" },
   { type: "image", src: g8, category: "लोक", title: "ग्रामस्थ" },
-  { type: "image", src: g9, category: "प्रकल्प", title: "नवीन प्रकल्प" },
   { type: "image", src: g10, category: "उत्सव", title: "सांस्कृतिक कार्यक्रम" },
   { type: "video", src: video1, category: "उत्सव", title: "ग्रामपंचायत व्हिडिओ" },
   // बाकी सभी इमेजेस (आप बाद में सही टाइटल/कैटेगरी बदल सकते हैं)
