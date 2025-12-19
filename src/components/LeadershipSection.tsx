@@ -7,30 +7,35 @@ const leaders = [
     title: "माननीय मुख्यमंत्री",
     party: "भाजप",
     since: "2024",
+    image: "https://images.mid-day.com/images/images/2025/apr/devandra-0904_d.jpg",
   },
   {
     name: "एकनाथ शिंदे",
     title: "माननीय उपमुख्यमंत्री",
     party: "शिवसेना",
     since: "2024",
+    image: "https://images.mid-day.com/images/images/2025/feb/Eknath-Shinde-new-file_d.jpg",
   },
   {
     name: "अजित पवार",
     title: "माननीय उपमुख्यमंत्री",
     party: "राष्ट्रवादी",
     since: "2024",
+    image: "https://www.uniindia.com/cms/gall_content/2025/2/2025_2$largeimg17_Feb_2025_195243597.jpg",
   },
   {
     name: "चंद्रशेखर बावनकुळे",
     title: "माननीय पालकमंत्री",
     party: "भाजप - नागपूर",
     since: "2024",
+    image: "https://images.indianexpress.com/2024/08/Untitled-design-19-6.jpg",
   },
   {
     name: "विनायक महामुनी",
     title: "जिल्हा मुख्य अधिकारी",
     party: "IAS - नागपूर जिल्हा परिषद",
     since: "2024",
+    image: "https://static.toiimg.com/thumb/msid-112908113,width-1280,height-720,resizemode-72/112908113.jpg",
   },
 ];
 
@@ -59,8 +64,10 @@ export function LeadershipSection() {
           viewport={{ once: true }}
           className="text-center mb-12"
         >
-          <h2 className="section-title">महाराष्ट्र सरकार नेतृत्व</h2>
-          <p className="section-subtitle">आमचे मार्गदर्शक नेते</p>
+          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+            महाराष्ट्र सरकार नेतृत्व
+          </h2>
+          <p className="text-lg text-muted-foreground mt-2">आमचे मार्गदर्शक नेते</p>
         </motion.div>
 
         <motion.div
@@ -68,24 +75,28 @@ export function LeadershipSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 md:gap-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
         >
-          {leaders.map((leader, index) => (
+          {leaders.map((leader) => (
             <motion.div key={leader.name} variants={itemVariants}>
-              <Card className="card-hover text-center group cursor-pointer">
+              <Card className="card-hover overflow-hidden text-center group cursor-pointer shadow-lg hover:shadow-xl transition-shadow">
                 <CardContent className="p-4 md:p-6">
-                  <div className="w-20 h-20 md:w-24 md:h-24 mx-auto mb-4 rounded-full bg-gradient-to-br from-primary/20 to-secondary/20 flex items-center justify-center overflow-hidden group-hover:scale-105 transition-transform">
-                    <div className="w-16 h-16 md:w-20 md:h-20 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-primary-foreground text-2xl md:text-3xl font-bold">
-                      {leader.name.charAt(0)}
-                    </div>
+                  <div className="w-32 h-32 md:w-40 md:h-40 mx-auto mb-4 rounded-full overflow-hidden border-4 border-primary/20 group-hover:border-primary/40 transition-all">
+                    <img
+                      src={leader.image}
+                      alt={leader.name}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
                   </div>
-                  <h3 className="font-semibold text-sm md:text-base text-foreground mb-1">
+                  <h3 className="font-bold text-base md:text-lg text-foreground mb-1">
                     {leader.name}
                   </h3>
-                  <p className="text-xs md:text-sm text-primary font-medium mb-1">
+                  <p className="text-sm md:text-base text-primary font-medium mb-1">
                     {leader.title}
                   </p>
-                  <p className="text-xs text-muted-foreground">{leader.party}</p>
+                  <p className="text-xs md:text-sm text-muted-foreground">
+                    {leader.party} • {leader.since} पासून
+                  </p>
                 </CardContent>
               </Card>
             </motion.div>

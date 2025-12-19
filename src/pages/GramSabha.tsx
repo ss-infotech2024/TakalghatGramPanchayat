@@ -1,62 +1,46 @@
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { motion } from "framer-motion";
-import { Button } from "@/components/ui/button";
-import { Textarea } from "@/components/ui/textarea";
-import { Input } from "@/components/ui/input";
-import { Calendar, FileText, Users, Clock, Download } from "lucide-react";
-import { useState } from "react";
+import { Calendar, Clock, Users, FileText } from "lucide-react";
 
-const meetings = [
+const pastMeetings = [
   {
     id: 1,
-    date: "१५ जानेवारी २०२४",
-    agenda: "वार्षिक बजेट मंजुरी",
-    attendees: 85,
-    status: "पूर्ण",
-    hasMinutes: true,
+    date: "२६ जानेवारी २०२५",
+    agenda: "प्रजासत्ताक दिन व वार्षिक अहवाल समीक्षा",
+    attendees: 92,
+    keyDecisions: "गाव स्वच्छता अभियानाला प्राधान्य, नवीन रस्ते प्रस्ताव मंजूर",
   },
   {
     id: 2,
-    date: "२६ जानेवारी २०२४",
-    agenda: "प्रजासत्ताक दिन कार्यक्रम",
-    attendees: 120,
-    status: "पूर्ण",
-    hasMinutes: true,
+    date: "०१ मे २०२५",
+    agenda: "महाराष्ट्र दिन व कामगार योजना चर्चा",
+    attendees: 78,
+    keyDecisions: "MGNREGA कामांची यादी तयार, महिला बचत गटांना प्रोत्साहन",
   },
   {
     id: 3,
-    date: "१५ फेब्रुवारी २०२४",
-    agenda: "रस्ते विकास प्रकल्प",
-    attendees: 75,
-    status: "पूर्ण",
-    hasMinutes: true,
-  },
-  {
-    id: 4,
-    date: "१५ मार्च २०२४",
-    agenda: "स्वच्छता अभियान समीक्षा",
-    attendees: 0,
-    status: "आगामी",
-    hasMinutes: false,
+    date: "१५ ऑगस्ट २०२५",
+    agenda: "स्वातंत्र्य दिन व जलजीवन मिशन प्रगती",
+    attendees: 115,
+    keyDecisions: "प्रत्येक घरात नळ जोडणी पूर्ण करण्याचे उद्दिष्ट, पाणी समिती स्थापना",
   },
 ];
 
 const upcomingMeeting = {
-  date: "१५ मार्च २०२४",
-  time: "सकाळी १०:०० वाजता",
-  venue: "ग्रामपंचायत कार्यालय",
+  date: "२६ जानेवारी २०२६",
+  time: "सकाळी १०:३० वाजता",
+  venue: "ग्रामपंचायत कार्यालय (मुख्य हॉल)",
   agenda: [
-    "स्वच्छता अभियान समीक्षा",
-    "पाणी पुरवठा अपडेट",
-    "नवीन प्रकल्प मंजुरी",
-    "नागरिक सूचना",
+    "प्रजासत्ताक दिन कार्यक्रम आयोजन",
+    "२०२५-२६ चा वार्षिक विकास आराखडा व बजेट चर्चा",
+    "स्वच्छ भारत अभियान व ODF प्लस स्थिती समीक्षा",
+    "नागरिकांच्या सूचना व तक्रारी",
+    "इतर विषय (परवानगीने)",
   ],
 };
 
 export default function GramSabha() {
-  const [suggestion, setSuggestion] = useState({ name: "", message: "" });
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
@@ -77,128 +61,105 @@ export default function GramSabha() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
             >
-              ग्रामसभा बैठका, मिनिट्स आणि नागरिक सूचना
+              गावाच्या विकासातील नागरिकांचा थेट सहभाग – ग्रामसभा बैठका व माहिती
             </motion.p>
           </div>
         </section>
 
         {/* Upcoming Meeting */}
-        <section className="py-12">
+        <section className="py-12 bg-muted/30">
           <div className="container">
-            <div className="grid md:grid-cols-2 gap-8">
-              <motion.div
-                className="bg-gradient-to-br from-primary to-primary/80 text-primary-foreground p-8 rounded-xl"
-                initial={{ opacity: 0, x: -30 }}
-                animate={{ opacity: 1, x: 0 }}
-              >
-                <h2 className="text-2xl font-bold mb-6">आगामी ग्रामसभा</h2>
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3">
-                    <Calendar className="w-5 h-5" />
-                    <span>{upcomingMeeting.date}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Clock className="w-5 h-5" />
-                    <span>{upcomingMeeting.time}</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <Users className="w-5 h-5" />
-                    <span>{upcomingMeeting.venue}</span>
+            <motion.div
+              className="bg-card p-8 md:p-10 rounded-xl border border-border max-w-4xl mx-auto"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+            >
+              <h2 className="text-2xl md:text-3xl font-bold mb-8 text-primary">आगामी ग्रामसभा</h2>
+              <div className="grid md:grid-cols-3 gap-6 mb-8">
+                <div className="flex items-center gap-4">
+                  <Calendar className="w-8 h-8 text-primary" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">तारीख</p>
+                    <p className="text-lg font-semibold">{upcomingMeeting.date}</p>
                   </div>
                 </div>
-                <div className="mt-6">
-                  <h3 className="font-semibold mb-3">कार्यसूची:</h3>
-                  <ul className="space-y-2">
-                    {upcomingMeeting.agenda.map((item, i) => (
-                      <li key={i} className="flex items-center gap-2 opacity-90">
-                        <span className="w-1.5 h-1.5 bg-secondary rounded-full" />
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                <div className="flex items-center gap-4">
+                  <Clock className="w-8 h-8 text-primary" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">वेळ</p>
+                    <p className="text-lg font-semibold">{upcomingMeeting.time}</p>
+                  </div>
                 </div>
-                <Button className="mt-6 bg-secondary text-secondary-foreground hover:bg-secondary/90">
-                  उपस्थिती नोंदवा
-                </Button>
-              </motion.div>
+                <div className="flex items-center gap-4">
+                  <Users className="w-8 h-8 text-primary" />
+                  <div>
+                    <p className="text-sm text-muted-foreground">स्थळ</p>
+                    <p className="text-lg font-semibold">{upcomingMeeting.venue}</p>
+                  </div>
+                </div>
+              </div>
 
-              {/* Suggestion Form */}
-              <motion.div
-                className="bg-card p-8 rounded-xl border border-border"
-                initial={{ opacity: 0, x: 30 }}
-                animate={{ opacity: 1, x: 0 }}
-              >
-                <h2 className="text-2xl font-bold mb-6">नागरिक सूचना</h2>
-                <p className="text-muted-foreground mb-6">
-                  ग्रामसभेसाठी तुमच्या सूचना आणि मुद्दे येथे नोंदवा.
-                </p>
-                <form className="space-y-4">
-                  <div>
-                    <label className="block text-sm font-medium mb-2">नाव</label>
-                    <Input
-                      placeholder="तुमचे नाव"
-                      value={suggestion.name}
-                      onChange={(e) => setSuggestion({ ...suggestion, name: e.target.value })}
-                    />
-                  </div>
-                  <div>
-                    <label className="block text-sm font-medium mb-2">सूचना / मुद्दा</label>
-                    <Textarea
-                      placeholder="तुमची सूचना येथे लिहा..."
-                      rows={4}
-                      value={suggestion.message}
-                      onChange={(e) => setSuggestion({ ...suggestion, message: e.target.value })}
-                    />
-                  </div>
-                  <Button type="submit" className="w-full">
-                    सूचना पाठवा
-                  </Button>
-                </form>
-              </motion.div>
-            </div>
+              <h3 className="text-xl font-semibold mb-4">प्रस्तावित कार्यसूची</h3>
+              <ul className="space-y-3">
+                {upcomingMeeting.agenda.map((item, i) => (
+                  <li key={i} className="flex items-start gap-3 text-muted-foreground">
+                    <span className="w-2 h-2 bg-primary rounded-full mt-2 flex-shrink-0" />
+                    <span className="text-base">{item}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <p className="mt-8 text-sm text-muted-foreground">
+                सर्व गावकरी व मतदारांना ग्रामसभेत उपस्थित राहून गावाच्या विकासात सहभागी व्हावे. तुमच्या सूचना व मुद्दे बैठकीत मांडता येतील.
+              </p>
+            </motion.div>
           </div>
         </section>
 
         {/* Past Meetings */}
-        <section className="py-12 bg-muted/50">
+        <section className="py-12">
           <div className="container">
-            <h2 className="section-title">मागील ग्रामसभा</h2>
-            <div className="grid md:grid-cols-2 gap-6">
-              {meetings.filter(m => m.status === "पूर्ण").map((meeting, index) => (
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-center">मागील ग्रामसभा बैठका (२०२५)</h2>
+            <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
+              {pastMeetings.map((meeting, index) => (
                 <motion.div
                   key={meeting.id}
-                  className="bg-card p-6 rounded-xl border border-border card-hover"
+                  className="bg-card rounded-xl border border-border p-6 hover:shadow-lg transition-shadow"
                   initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.1 }}
                 >
-                  <div className="flex justify-between items-start mb-4">
-                    <div>
-                      <div className="flex items-center gap-2 text-primary mb-2">
-                        <Calendar className="w-4 h-4" />
-                        <span className="font-medium">{meeting.date}</span>
-                      </div>
-                      <h3 className="text-lg font-bold">{meeting.agenda}</h3>
-                    </div>
-                    <span className="px-3 py-1 bg-accent/10 text-accent rounded-full text-xs">
-                      {meeting.status}
-                    </span>
+                  <div className="flex items-center gap-3 mb-4">
+                    <Calendar className="w-6 h-6 text-primary" />
+                    <span className="text-lg font-semibold">{meeting.date}</span>
                   </div>
-                  <div className="flex items-center gap-4 text-sm text-muted-foreground mb-4">
-                    <div className="flex items-center gap-1">
-                      <Users className="w-4 h-4" />
-                      <span>{meeting.attendees} उपस्थित</span>
-                    </div>
+                  <h3 className="text-lg font-medium mb-3">{meeting.agenda}</h3>
+                  <div className="flex items-center gap-2 text-muted-foreground mb-4">
+                    <Users className="w-5 h-5" />
+                    <span>{meeting.attendees} नागरिक उपस्थित</span>
                   </div>
-                  {meeting.hasMinutes && (
-                    <Button size="sm" variant="outline">
-                      <Download className="w-4 h-4 mr-2" />
-                      मिनिट्स डाउनलोड
-                    </Button>
-                  )}
+                  <div className="bg-muted/30 rounded-lg p-4">
+                    <p className="text-sm font-medium text-primary mb-2">मुख्य ठराव / निर्णय</p>
+                    <p className="text-sm text-muted-foreground">{meeting.keyDecisions}</p>
+                  </div>
                 </motion.div>
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Additional Info */}
+        <section className="py-12 bg-muted/30">
+          <div className="container max-w-4xl mx-auto">
+            <div className="bg-card rounded-xl border border-border p-8">
+              <h3 className="text-xl font-semibold mb-6">ग्रामसभा विषयी महत्त्वाची माहिती</h3>
+              <ul className="space-y-4 text-muted-foreground">
+                <li>• महाराष्ट्रात वर्षातून किमान ४ ग्रामसभा घेणे बंधनकारक आहे (२६ जानेवारी, १ मे, १५ ऑगस्ट व नवीन आर्थिक वर्षापूर्वी बजेट सभा).</li>
+                <li>• ग्रामसभा ही गावातील सर्व मतदारांची सभा असते – येथे विकास कामे, बजेट, योजना व तक्रारींवर चर्चा होते.</li>
+                <li>• ग्रामसभेचे ठराव ग्रामपंचायतीला बंधनकारक असतात.</li>
+                <li>• सर्व नागरिकांना ग्रामसभेत बोलण्याचा व सूचना मांडण्याचा अधिकार आहे.</li>
+                <li>• ग्रामसभेत उपस्थित राहून गावाच्या विकासात थेट सहभाग घ्या!</li>
+              </ul>
             </div>
           </div>
         </section>

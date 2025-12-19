@@ -53,8 +53,8 @@ export function Header() {
             <Link to="/" className="flex items-center gap-3">
               <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-primary-foreground shadow-card">
                 <svg viewBox="0 0 50 50" className="w-10 h-10" fill="currentColor">
-                  <path d="M25 5c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zm0 3c9.4 0 17 7.6 17 17s-7.6 17-17 17-17-7.6-17-17 7.6-17 17-17z"/>
-                  <path d="M25 12l-8 13h5v10h6v-10h5z"/>
+                  <path d="M25 5c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zm0 3c9.4 0 17 7.6 17 17s-7.6 17-17 17-17-7.6-17-17 7.6-17 17-17z" />
+                  <path d="M25 12l-8 13h5v10h6v-10h5z" />
                 </svg>
               </div>
               <div>
@@ -82,29 +82,6 @@ export function Header() {
 
           {/* Right side */}
           <div className="flex items-center gap-3">
-            {/* Search */}
-            <Button variant="ghost" size="icon" className="hidden md:flex">
-              <Search className="h-5 w-5" />
-            </Button>
-
-            {/* Social links */}
-            <div className="hidden md:flex items-center gap-1">
-              {socialLinks.map((social) => (
-                <a
-                  key={social.label}
-                  href={social.href}
-                  className="p-2 text-muted-foreground hover:text-primary hover:scale-110 transition-all duration-300"
-                  aria-label={social.label}
-                >
-                  <social.icon className="h-4 w-4" />
-                </a>
-              ))}
-            </div>
-
-            {/* Language switcher */}
-            <Button variant="outline" size="sm" className="hidden md:flex text-xs">
-              मराठी / EN
-            </Button>
 
             {/* Mobile menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>
@@ -114,7 +91,7 @@ export function Header() {
                 </Button>
               </SheetTrigger>
               <SheetContent side="right" className="w-80">
-              <nav className="flex flex-col gap-2 mt-8">
+                <nav className="flex flex-col gap-2 mt-8">
                   {navItems.map((item, index) => (
                     <motion.div
                       key={item.name}
