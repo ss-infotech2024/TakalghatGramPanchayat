@@ -73,6 +73,10 @@ const galleryItems = [
   { type: "image", file: "g53.jpg", category: "उत्सव", title: "रक्षाबंधन" },
   { type: "image", file: "g54.jpg", category: "स्वच्छता", title: "रिसायकलिंग" },
   { type: "image", file: "g55.jpg", category: "पायाभूत", title: "सौर दिवे" },
+  { type: "image", file: "g57.jpeg", category: "प्रकल्प", title: "अंगणवाडी" },
+  { type: "image", file: "g58.png", category: "प्रकल्प", title: "ज़ि. प. शाळा बिडगणेशपूर" },
+  { type: "image", file: "g59.jpeg", category: "प्रकल्प", title: "ज़ि. प. शाळा बिडगणेशपूर" },
+  { type: "image", file: "g60.png", category: "प्रकल्प", title: "ज़ि. प. शाळा बिडगणेशपूर" },
 ];
 
 const categories = ["सर्व", "प्रकल्प", "उत्सव", "स्वच्छता", "पायाभूत", "लोक"];

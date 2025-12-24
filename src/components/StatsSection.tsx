@@ -5,21 +5,21 @@ import { Users, MapPin, School, Calendar } from "lucide-react";
 const stats = [
   {
     icon: Users,
-    value: 1239,
+    value: 16529,
     suffix: "",
     label: "लोकसंख्या",
-    detail: "पुरुष: ६४९ | स्त्री: ५९०",
+    detail: "पुरुष: ८९१८ | स्त्री: ७६११",
   },
   {
     icon: MapPin,
-    value: 4.1,
+    value: 1211.18,
     suffix: " चौ. किमी",
     label: "एकूण क्षेत्रफळ",
     detail: "मुख्यतः शेती आणि ग्रामीण भाग",
   },
   {
     icon: School,
-    value: 5,
+    value: 4,
     suffix: "+",
     label: "शाळा व संस्था",
     detail: "अंगणवाडी, प्राथमिक, हायस्कूल",
