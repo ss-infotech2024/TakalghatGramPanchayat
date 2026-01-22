@@ -44,19 +44,25 @@ export function Header() {
       {/* Main header */}
       <div className="container py-3">
         <div className="flex items-center justify-between">
-          {/* Logo */}
+          {/* Left Logo */}
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.5 }}
+            className="flex items-center gap-6"
           >
+            {/* Left Logo (logo1.jpeg) */}
+            <div className="hidden md:block">
+              <img
+                src="/logo1.jpeg"
+                alt="ग्रामपंचायत लोगो"
+                className="w-16 h-16 object-contain"
+              />
+            </div>
+
+            {/* Center Logo/Title */}
             <Link to="/" className="flex items-center gap-3">
-              <div className="w-14 h-14 rounded-full bg-gradient-to-br from-primary to-primary/80 flex items-center justify-center text-primary-foreground shadow-card">
-                <svg viewBox="0 0 50 50" className="w-10 h-10" fill="currentColor">
-                  <path d="M25 5c-11 0-20 9-20 20s9 20 20 20 20-9 20-20-9-20-20-20zm0 3c9.4 0 17 7.6 17 17s-7.6 17-17 17-17-7.6-17-17 7.6-17 17-17z" />
-                  <path d="M25 12l-8 13h5v10h6v-10h5z" />
-                </svg>
-              </div>
+
               <div>
                 <h1 className="text-xl font-bold text-primary leading-tight">ग्रामपंचायत टाकळघाट</h1>
                 <p className="text-xs text-muted-foreground">ता. हिंगणा, जि. नागपूर, महाराष्ट्र</p>
@@ -80,8 +86,21 @@ export function Header() {
             ))}
           </nav>
 
-          {/* Right side */}
+          {/* Right side with Right Logo */}
           <div className="flex items-center gap-3">
+            {/* Right Logo (logo2.jpeg) */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="hidden md:block"
+            >
+              <img
+                src="/logo2.jpeg"
+                alt="ग्रामपंचायत लोगो"
+                className="w-16 h-16 object-contain"
+              />
+            </motion.div>
 
             {/* Mobile menu */}
             <Sheet open={isOpen} onOpenChange={setIsOpen}>

@@ -26,8 +26,8 @@ const stats = [
   },
   {
     icon: Calendar,
-    value: 1950,
-    suffix: "",
+    value: 1948,
+    suffix: " ",
     label: "स्थापना",
     detail: "विदर्भातील ऐतिहासिक गाव",
   },
@@ -58,6 +58,7 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
       return () => clearInterval(timer);
     }
   }, [isInView, value]);
+
 
   return (
     <span ref={ref}>
