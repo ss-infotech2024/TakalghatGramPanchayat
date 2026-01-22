@@ -5,19 +5,18 @@ import { useEffect, useState } from "react";
 import { Button } from "@/components/ui/button";
 import { X, Play } from "lucide-react";
 
-// Dynamic imports for all images and video
-// This avoids build-time "file not found" errors due to case sensitivity or missing files
-const importAllImages = import.meta.glob("@/assets/gallery/*.{jpg,jpeg,png,webp,JPG,JPEG,PNG,WEBP}", {
-  eager: false,
+// Load all images
+const images = import.meta.glob("/src/assets/gallery/*.{jpg,jpeg,png,webp}", {
+  eager: true,
   import: "default",
 });
 
-const videoImport = import.meta.glob("@/assets/gallery/*.mp4", {
-  eager: false,
+// Load all videos
+const videos = import.meta.glob("/src/assets/gallery/*.mp4", {
+  eager: true,
   import: "default",
 });
 
-// Define gallery items using filenames (make sure these match EXACT file names in your folder)
 const galleryItems = [
   { type: "image", file: "g1.jpg", category: "प्रकल्प", title: "आयुष्मान आरोग्य मंदिर" },
   { type: "image", file: "g2.jpg", category: "उत्सव", title: "ग्रामोत्सव" },
@@ -81,35 +80,11 @@ const galleryItems = [
 
 const categories = ["सर्व", "प्रकल्प", "उत्सव", "स्वच्छता", "पायाभूत", "लोक"];
 
-// Component to lazily load image/video source
 function GalleryItem({ item }: { item: any }) {
-  const [src, setSrc] = useState<string | null>(null);
-
-  useEffect(() => {
-    const loadAsset = async () => {
-      try {
-        if (item.type === "image") {
-          const path = `@/assets/gallery/${item.file}`;
-          const importFn = importAllImages[path] as (() => Promise<{ default: string }>) | undefined;
-          if (importFn) {
-            const module = await importFn();
-            setSrc(module.default);
-          }
-        } else if (item.type === "video") {
-          const path = `@/assets/gallery/${item.file}`;
-          const importFn = videoImport[path] as (() => Promise<{ default: string }>) | undefined;
-          if (importFn) {
-            const module = await importFn();
-            setSrc(module.default);
-          }
-        }
-      } catch (err) {
-        console.error(`Failed to load ${item.file}:`, err);
-      }
-    };
-
-    loadAsset();
-  }, [item]);
+  const src =
+    item.type === "image"
+      ? (images[`/src/assets/gallery/${item.file}`] as string)
+      : (videos[`/src/assets/gallery/${item.file}`] as string);
 
   if (!src) {
     return (
@@ -138,30 +113,10 @@ function GalleryItem({ item }: { item: any }) {
 export default function Gallery() {
   const [activeCategory, setActiveCategory] = useState("सर्व");
   const [selectedItem, setSelectedItem] = useState<any | null>(null);
-  const [selectedSrc, setSelectedSrc] = useState<string | null>(null);
 
   const filteredItems = activeCategory === "सर्व"
     ? galleryItems
     : galleryItems.filter((item) => item.category === activeCategory);
-
-  const openLightbox = async (item: any) => {
-    if (item.type === "image") {
-      const path = `@/assets/gallery/${item.file}`;
-      const importFn = importAllImages[path] as (() => Promise<{ default: string }>) | undefined;
-      if (importFn) {
-        const module = await importFn();
-        setSelectedSrc(module.default);
-      }
-    } else if (item.type === "video") {
-      const path = `@/assets/gallery/${item.file}`;
-      const importFn = videoImport[path] as (() => Promise<{ default: string }>) | undefined;
-      if (importFn) {
-        const module = await importFn();
-        setSelectedSrc(module.default);
-      }
-    }
-    setSelectedItem(item);
-  };
 
   return (
     <div className="min-h-screen bg-background">
@@ -217,7 +172,7 @@ export default function Gallery() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.05 }}
-                  onClick={() => openLightbox(item)}
+                  onClick={() => setSelectedItem(item)}
                 >
                   <GalleryItem item={item} />
 
@@ -244,29 +199,23 @@ export default function Gallery() {
         </section>
 
         {/* Lightbox Modal */}
-        {selectedItem && selectedSrc && (
+        {selectedItem && (
           <motion.div
             className="fixed inset-0 z-50 bg-black/95 flex items-center justify-center p-4"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            onClick={() => {
-              setSelectedItem(null);
-              setSelectedSrc(null);
-            }}
+            onClick={() => setSelectedItem(null)}
           >
             <button
               className="absolute top-4 right-4 p-3 bg-white/20 hover:bg-white/40 rounded-full text-white backdrop-blur-sm transition"
-              onClick={() => {
-                setSelectedItem(null);
-                setSelectedSrc(null);
-              }}
+              onClick={() => setSelectedItem(null)}
             >
               <X className="w-8 h-8" />
             </button>
 
             {selectedItem.type === "image" ? (
               <motion.img
-                src={selectedSrc}
+                src={images[`/src/assets/gallery/${selectedItem.file}`] as string}
                 alt={selectedItem.title}
                 className="max-w-full max-h-[90vh] rounded-xl shadow-2xl"
                 initial={{ scale: 0.8, opacity: 0 }}
@@ -275,7 +224,7 @@ export default function Gallery() {
               />
             ) : (
               <motion.video
-                src={selectedSrc}
+                src={videos[`/src/assets/gallery/${selectedItem.file}`] as string}
                 autoPlay
                 controls
                 loop

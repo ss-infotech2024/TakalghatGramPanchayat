@@ -32,7 +32,7 @@ const leaders = [
   },
   {
     name: "विनायक महामुनी",
-    title: "जिल्हा मुख्य अधिकारी",
+    title: " कार्यकारी अधिकारी",
     party: "IAS - नागपूर जिल्हा परिषद",
     since: "2024",
     image: "https://static.toiimg.com/thumb/msid-112908113,width-1280,height-720,resizemode-72/112908113.jpg",

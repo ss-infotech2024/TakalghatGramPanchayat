@@ -30,7 +30,7 @@ const pastMeetings = [
 const upcomingMeeting = {
   date: "२६ जानेवारी २०२६",
   time: "सकाळी १०:३० वाजता",
-  venue: "ग्रामपंचायत कार्यालय (मुख्य हॉल)",
+  venue: "ग्रामपंचायत कार्यालय ( हॉल)",
   agenda: [
     "प्रजासत्ताक दिन कार्यक्रम आयोजन",
     "२०२५-२६ चा वार्षिक विकास आराखडा व बजेट चर्चा",
@@ -139,7 +139,7 @@ export default function GramSabha() {
                     <span>{meeting.attendees} नागरिक उपस्थित</span>
                   </div>
                   <div className="bg-muted/30 rounded-lg p-4">
-                    <p className="text-sm font-medium text-primary mb-2">मुख्य ठराव / निर्णय</p>
+                    <p className="text-sm font-medium text-primary mb-2"> ठराव / निर्णय</p>
                     <p className="text-sm text-muted-foreground">{meeting.keyDecisions}</p>
                   </div>
                 </motion.div>
