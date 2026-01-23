@@ -5,7 +5,7 @@ import { useState } from "react";
 import { X } from "lucide-react";
 
 // Load images
-const images = import.meta.glob("/src/assets/gallery/*.{jpg,jpeg,png,webp}", {
+const images = import.meta.glob("/src/assets/gallery/*.{jpg,jpeg,png,webp,mp4}", {
   eager: true,
   import: "default",
 });

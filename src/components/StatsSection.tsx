@@ -1,6 +1,6 @@
 import { useEffect, useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
-import { Users, MapPin, School, Calendar } from "lucide-react";
+import { Users, MapPin, School, Calendar, Building, Home } from "lucide-react";
 
 const stats = [
   {
@@ -19,15 +19,23 @@ const stats = [
   },
   {
     icon: School,
-    value: 4,
-    suffix: "+",
-    label: "शाळा व संस्था",
-    detail: "अंगणवाडी, प्राथमिक, हायस्कूल",
+    value: 14,
+    suffix: "",
+    label: "अंगणवाडी",
+    detail: "गावातील बालविकास केंद्रे",
   },
+  {
+    icon: Building,
+    value: 4,
+    suffix: "",
+    label: "जिल्हा परिषद शाळा",
+    detail: "प्राथमिक व माध्यमिक शिक्षण",
+  },
+  
   {
     icon: Calendar,
     value: 1948,
-    suffix: " ",
+    suffix: "",
     label: "स्थापना",
     detail: "विदर्भातील ऐतिहासिक गाव",
   },
@@ -59,7 +67,6 @@ function Counter({ value, suffix }: { value: number; suffix: string }) {
     }
   }, [isInView, value]);
 
-
   return (
     <span ref={ref}>
       {count.toLocaleString("mr-IN")}
@@ -82,7 +89,7 @@ export function StatsSection() {
           <p className="text-primary-foreground/80 text-lg">२०११ जनगणनेनुसार अद्यतनित माहिती</p>
         </motion.div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {stats.map((stat, index) => (
             <motion.div
               key={stat.label}
