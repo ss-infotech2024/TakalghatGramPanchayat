@@ -6,35 +6,32 @@ const leaders = [
     name: "देवेंद्र फडणवीस",
     title: "माननीय मुख्यमंत्री",
     party: "भाजप",
-    since: "2024",
     image: "https://images.mid-day.com/images/images/2025/apr/devandra-0904_d.jpg",
   },
   {
     name: "एकनाथ शिंदे",
     title: "माननीय उपमुख्यमंत्री",
     party: "शिवसेना",
-    since: "2024",
+
     image: "https://images.mid-day.com/images/images/2025/feb/Eknath-Shinde-new-file_d.jpg",
   },
   {
     name: "अजित पवार",
     title: "माननीय उपमुख्यमंत्री",
     party: "राष्ट्रवादी",
-    since: "2024",
+
     image: "https://www.uniindia.com/cms/gall_content/2025/2/2025_2$largeimg17_Feb_2025_195243597.jpg",
   },
   {
     name: "चंद्रशेखर बावनकुळे",
     title: "माननीय पालकमंत्री",
     party: "भाजप - नागपूर",
-    since: "2024",
     image: "https://images.indianexpress.com/2024/08/Untitled-design-19-6.jpg",
   },
   {
     name: "विनायक महामुनी",
-    title: " कार्यकारी अधिकारी",
-    party: "IAS - नागपूर जिल्हा परिषद",
-    since: "2024",
+    title: "  मुख्य कार्यकारी",
+    party: "अधिकारी जिल्हा परिषद नागपूर",
     image: "https://static.toiimg.com/thumb/msid-112908113,width-1280,height-720,resizemode-72/112908113.jpg",
   },
 ];
