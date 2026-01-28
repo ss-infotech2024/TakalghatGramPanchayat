@@ -52,7 +52,7 @@ export default function Gallery() {
               animate={{ opacity: 1 }}
               transition={{ delay: index * 0.03 }}
               onClick={() =>
-                setSelectedMedia({ src: item.src, type: item.type })
+                setSelectedMedia({ src: item.src, type: item.type as "image" | "video" })
               }
             >
               {item.type === "image" ? (
