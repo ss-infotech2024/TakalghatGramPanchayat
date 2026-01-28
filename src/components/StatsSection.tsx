@@ -31,7 +31,13 @@ const stats = [
     label: "जिल्हा परिषद शाळा",
     detail: "प्राथमिक व माध्यमिक शिक्षण",
   },
-  
+  {
+    icon: Home,
+    value: 6,
+    suffix: "",
+    label: "वॉर्ड",
+    detail: "ग्रामपंचायत अंतर्गत विभाग",
+  },
   {
     icon: Calendar,
     value: 1948,
@@ -86,7 +92,9 @@ export function StatsSection() {
           className="text-center mb-12"
         >
           <h2 className="text-3xl md:text-4xl font-bold mb-4">गाव आकडेवारी</h2>
-          <p className="text-primary-foreground/80 text-lg">२०११ जनगणनेनुसार अद्यतनित माहिती</p>
+          <p className="text-primary-foreground/80 text-lg">
+            २०११ जनगणनेनुसार अद्यतनित माहिती
+          </p>
         </motion.div>
 
         <div className="grid grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">

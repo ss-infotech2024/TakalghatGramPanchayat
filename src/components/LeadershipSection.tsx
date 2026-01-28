@@ -12,25 +12,17 @@ const leaders = [
     name: "एकनाथ शिंदे",
     title: "माननीय उपमुख्यमंत्री",
     party: "शिवसेना",
-
     image: "https://images.mid-day.com/images/images/2025/feb/Eknath-Shinde-new-file_d.jpg",
   },
   {
     name: "अजित पवार",
     title: "माननीय उपमुख्यमंत्री",
     party: "राष्ट्रवादी",
-
     image: "https://www.uniindia.com/cms/gall_content/2025/2/2025_2$largeimg17_Feb_2025_195243597.jpg",
   },
   {
-    name: "चंद्रशेखर बावनकुळे",
-    title: "माननीय पालकमंत्री",
-    party: "भाजप - नागपूर",
-    image: "https://images.indianexpress.com/2024/08/Untitled-design-19-6.jpg",
-  },
-  {
     name: "विनायक महामुनी",
-    title: "  मुख्य कार्यकारी",
+    title: "मुख्य कार्यकारी",
     party: "अधिकारी जिल्हा परिषद नागपूर",
     image: "https://static.toiimg.com/thumb/msid-112908113,width-1280,height-720,resizemode-72/112908113.jpg",
   },
@@ -64,7 +56,9 @@ export function LeadershipSection() {
           <h2 className="text-3xl md:text-4xl font-bold text-foreground">
             महाराष्ट्र सरकार नेतृत्व
           </h2>
-          <p className="text-lg text-muted-foreground mt-2">आमचे मार्गदर्शक नेते</p>
+          <p className="text-lg text-muted-foreground mt-2">
+            आमचे मार्गदर्शक नेते
+          </p>
         </motion.div>
 
         <motion.div
@@ -72,7 +66,7 @@ export function LeadershipSection() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6"
+          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 justify-center justify-items-center"
         >
           {leaders.map((leader) => (
             <motion.div key={leader.name} variants={itemVariants}>
@@ -90,9 +84,6 @@ export function LeadershipSection() {
                   </h3>
                   <p className="text-sm md:text-base text-primary font-medium mb-1">
                     {leader.title}
-                  </p>
-                  <p className="text-xs md:text-sm text-muted-foreground">
-                    {leader.party} • {leader.since} पासून
                   </p>
                 </CardContent>
               </Card>

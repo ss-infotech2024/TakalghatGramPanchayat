@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import { Link } from "react-router-dom"; // जर तुम्ही React Router वापरत असाल तर (Next.js साठी <Link> चा वापर करा)
 
-import g1 from "@/assets/gallery/g1.jpg";
+import g1 from "../assets/gallery/g1.jpg";
 import g3 from "@/assets/gallery/g3.jpg";
 import g5 from "@/assets/gallery/g5.jpg";
 import g8 from "@/assets/gallery/g8.jpg";
